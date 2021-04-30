@@ -23,7 +23,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/E8cl_8ktp9M/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBWco2a6RQ2I0sULmWMunAiBVuNyA",
         partOfPlaylists: [],
       },
       {
@@ -34,7 +34,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/3n1VkrzhxUE/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCvhM0Dru9p5usdNRrggv5V3N5pAQ",
         partOfPlaylists: [],
       },
       {
@@ -45,7 +45,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/UpEupeE7vUE/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAPJz19L9uG45PbfzYxjwx9JbDHxg",
         partOfPlaylists: [],
       },
       {
@@ -56,7 +56,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/Nyj1nzXLFjM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBwzZcrvmL5QSo9sdux9s9Z_TgBJQ",
         partOfPlaylists: [],
       },
     ],
@@ -100,7 +100,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/QyJW1yJvwqg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCmIAliI8tPM2VBV2tvWP6VqhI56g",
         partOfPlaylists: [],
       },
       {
@@ -111,7 +111,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/2vtYq6wjBXo/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCLIRa7Lc5RO5-hlaTfhOZ5zXlZkw",
         partOfPlaylists: [],
       },
       {
@@ -122,7 +122,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/SLwdkFczQNA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAC3X_RRqUtWplQvTuB5S95kv-3Yw",
         partOfPlaylists: [],
       },
       {
@@ -133,7 +133,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/vSQnpxfS9W8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCgwo4e7SM8x-Dc9xkP-yMT5zI1Ew",
         partOfPlaylists: [],
       },
       {
@@ -144,7 +144,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/amTn4KB4RL8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD0OCeX-iPXJgI2E-Aq8J7-Gx14mg",
         partOfPlaylists: [],
       },
       {
@@ -155,7 +155,7 @@ const allPlaylists = [
         ownerImage:
           "https://yt3.ggpht.com/ytc/AAUvwnibnmzbi8nfRHEAzdI-8lpPGsrD1F6Cg3mAImtQ=s88-c-k-c0x00ffffff-no-rj",
         image:
-          "https://i.ytimg.com/vi/wLtwrYBwD7E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVFHDmcn0QjJ_D0MrT7vIK7oGwZA",
+          "https://i.ytimg.com/vi/G7FUyJ__iI4/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBuk9yN09FAGm9bgglAKvXbfpP59Q",
         partOfPlaylists: [],
       },
     ],
