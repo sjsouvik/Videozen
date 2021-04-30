@@ -1,0 +1,41 @@
+.playlists {
+  padding: 2rem;
+}
+
+.horizontal {
+  max-width: 100%;
+}
+
+.horizontal-card-image {
+  width: 30%;
+}
+
+.horizontal-section {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.horizontal-section p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.avatar {
+  height: 3rem;
+  width: 3rem;
+  margin-right: 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .playlists {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .horizontal-card-image {
+    width: 50%;
+  }
+}
