@@ -68,7 +68,12 @@ const PlaylistVideo = () => {
             activeStyle={{ fontWeight: "bold" }}
             style={{ textDecoration: "none", color: "black" }}
           >
-            <li className="videolist">{video.title}</li>
+            <li className="videolist">
+              <div>
+                <img src={video.image} className="thumbnail" />
+              </div>
+              <div className="title">{video.title}</div>
+            </li>
           </NavLink>
         ))}
       </nav>
