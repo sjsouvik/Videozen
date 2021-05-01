@@ -2,11 +2,6 @@
   padding: 1rem 2rem;
 }
 
-.card-body {
-  padding: 0.5rem;
-  text-align: left;
-}
-
 .card-title {
   font-size: 1.1rem;
 }
@@ -41,7 +36,7 @@
     width: 250px;
   }
 
-  .vertical img {
+  .vertical-img {
     width: 250px;
   }
 }
@@ -55,7 +50,7 @@
     width: 230px;
   }
 
-  .vertical img {
+  .vertical-img {
     width: 230px;
   }
 }
@@ -69,7 +64,7 @@
     width: 270px;
   }
 
-  .vertical img {
+  .vertical-img {
     width: 270px;
   }
 }
@@ -83,7 +78,7 @@
     width: 240px;
   }
 
-  .vertical img {
+  .vertical-img {
     width: 240px;
   }
 }
@@ -101,7 +96,7 @@
     width: 100%;
   }
 
-  .vertical img {
+  .vertical-img {
     width: 100%;
   }
 }

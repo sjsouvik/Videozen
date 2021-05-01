@@ -17,7 +17,12 @@ const CreatedPlaylistsVideos = (props) => {
             state={video}
             style={{ textDecoration: "none", color: "black" }}
           >
-            <Video id={video.id} title={video.title} image={video.image} />
+            <Video
+              id={video.id}
+              title={video.title}
+              image={video.image}
+              ownerImage={video.ownerImage}
+            />
           </Link>
         ))}
       </div>

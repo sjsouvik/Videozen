@@ -43,7 +43,12 @@ const Videos = () => {
             state={video}
             style={{ textDecoration: "none", color: "black" }}
           >
-            <Video id={video.id} image={video.image} title={video.title} />
+            <Video
+              id={video.id}
+              image={video.image}
+              ownerImage={video.ownerImage}
+              title={video.title}
+            />
           </Link>
         ))}
       </div>

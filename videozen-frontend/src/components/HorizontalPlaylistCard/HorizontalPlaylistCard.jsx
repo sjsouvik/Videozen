@@ -6,7 +6,7 @@ const HorizontalPlaylistCard = (props) => {
         alt="thumbnail"
         className="horizontal-card-image"
       />
-      <div className="card-body">
+      <div className="card-body" style={{ textAlign: "left" }}>
         <div className="horizontal-section">
           <p className="product-title ">{props.playlist.name}</p>
         </div>
