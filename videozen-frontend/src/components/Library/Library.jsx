@@ -23,6 +23,15 @@ const Library = () => {
           />
         }
       </div>
+      <div style={{ paddingTop: "2rem" }}>
+        {
+          <LibraryVideos
+            videos={state.history}
+            playlistName="History"
+            playlistId="history"
+          />
+        }
+      </div>
     </div>
   );
 };

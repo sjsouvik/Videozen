@@ -7,7 +7,7 @@ import Video from "../Video/Video";
 import { useState } from "react";
 
 const Videos = () => {
-  const { state } = useData();
+  const { state, dispatch } = useData();
   const [searchedText, setSearchedText] = useState("");
 
   let allVideos = state.allPlaylists.reduce(
@@ -42,6 +42,9 @@ const Videos = () => {
             to={`/playlist/allvideos/${video.id}`}
             state={video}
             style={{ textDecoration: "none", color: "black" }}
+            onClick={() =>
+              dispatch({ type: "ADD_TO_HISTORY", payload: { video: video } })
+            }
           >
             <Video
               id={video.id}

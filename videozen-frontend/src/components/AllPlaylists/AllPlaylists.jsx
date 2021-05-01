@@ -18,6 +18,12 @@ const AllPlaylists = () => {
           to={`/playlist/${playlist.id}/${playlist.videos[0].id}`}
           state={playlist.videos[0]}
           style={{ textDecoration: "none", color: "black" }}
+          onClick={() =>
+            dispatch({
+              type: "ADD_TO_HISTORY",
+              payload: { video: playlist.videos[0] },
+            })
+          }
         >
           {/* <div className="card vertical" key={playlist.name}>
             <img src={playlist.image} alt="thumbnail" />

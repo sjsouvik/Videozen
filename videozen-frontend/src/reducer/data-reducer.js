@@ -133,6 +133,9 @@ export const dataReducer = (state, action) => {
         ),
       };
 
+    case "ADD_TO_HISTORY":
+      return { ...state, history: [...state.history, action.payload.video] };
+
     default:
       return state;
   }

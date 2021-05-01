@@ -28,7 +28,7 @@ const SideMenu = () => {
 };
 
 const PlaylistVideo = () => {
-  const { state } = useData();
+  const { state, dispatch } = useData();
   const { playlist, playlistId, videoId } = useParams();
 
   let playlistVideos = [];
@@ -47,6 +47,8 @@ const PlaylistVideo = () => {
   } else if (playlist === "createdplaylist") {
     if (playlistId === "likedvideos") {
       playlistVideos = state.likedVideos;
+    } else if (playlistId === "history") {
+      playlistVideos = state.history;
     } else {
       playlistVideos = state.createdPlaylists.find(
         (playlist) => playlist.id === playlistId
@@ -67,6 +69,9 @@ const PlaylistVideo = () => {
             state={video}
             activeStyle={{ fontWeight: "bold" }}
             style={{ textDecoration: "none", color: "black" }}
+            onClick={() =>
+              dispatch({ type: "ADD_TO_HISTORY", payload: { video: video } })
+            }
           >
             <li className="videolist">
               <div>

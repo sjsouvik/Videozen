@@ -165,6 +165,7 @@ const allPlaylists = [
 const dataState = {
   allPlaylists,
   likedVideos: [],
+  history: [],
   createdPlaylists: [{ id: uuid(), name: "Watch Later", videos: [] }],
 };
 
