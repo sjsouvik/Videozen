@@ -6,6 +6,8 @@ import { useLocation } from "react-router-dom";
 import Toast from "../../Toast/Toast";
 import ModalPart from "../ModalPart/ModalPart";
 
+import AddPlaylist from "../../../assets/playlist1.svg";
+
 const CurrentVideo = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -100,7 +102,8 @@ const CurrentVideo = (props) => {
                   className="icon-video icon-save"
                   onClick={() => setShowModal(true)}
                 >
-                  <ion-icon name="bookmark"></ion-icon>
+                  {/* <ion-icon name="bookmark"></ion-icon> */}
+                  <img src={AddPlaylist} />
                 </span>
               </div>
             </div>
