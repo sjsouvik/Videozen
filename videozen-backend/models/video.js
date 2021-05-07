@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 require("mongoose-type-url");
 
-const videoScheema = new mongoose.Schema(
+const videoSchema = new mongoose.Schema(
   {
     videoId: {
       type: String,
@@ -28,4 +28,4 @@ const videoScheema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("video", videoSchema);
+module.exports = mongoose.model("Video", videoSchema);
