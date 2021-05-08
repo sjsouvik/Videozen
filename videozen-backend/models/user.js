@@ -14,7 +14,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: [true, "Please enter user's email id"],
-      unique: true,
+      unique: [
+        true,
+        "This email is already registered, please enter a unique email id",
+      ],
     },
   },
   { timestamps: true }
