@@ -39,7 +39,7 @@ exports.createOrUpdateLikedVideos = async (req, res) => {
 
 exports.getLikedVideos = async (req, res) => {
   try {
-    const likedVideos = await LikedVideo.find({ user: req.user._id })
+    const likedVideos = await LikedVideo.findOne({ user: req.user._id })
       .populate("videos")
       .populate("user");
 

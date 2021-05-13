@@ -15,6 +15,7 @@ const playlistRoutes = require("./routes/allPlaylist");
 const createdPlaylistRoutes = require("./routes/createdPlaylist");
 const likedVideoRoutes = require("./routes/likedVideo");
 const historyRoutes = require("./routes/history");
+const watchLaterRoutes = require("./routes/watchLater");
 
 app.use("/v1", userRoutes);
 app.use("/v1", videoRoutes);
@@ -22,6 +23,7 @@ app.use("/v1", playlistRoutes);
 app.use("/v1", createdPlaylistRoutes);
 app.use("/v1", likedVideoRoutes);
 app.use("/v1", historyRoutes);
+app.use("/v1", watchLaterRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to API of Videozen");
