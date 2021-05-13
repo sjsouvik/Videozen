@@ -10,8 +10,18 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const userRoutes = require("./routes/user");
+const videoRoutes = require("./routes/video");
+const playlistRoutes = require("./routes/allPlaylist");
+const createdPlaylistRoutes = require("./routes/createdPlaylist");
+const likedVideoRoutes = require("./routes/likedVideo");
+const historyRoutes = require("./routes/history");
 
 app.use("/v1", userRoutes);
+app.use("/v1", videoRoutes);
+app.use("/v1", playlistRoutes);
+app.use("/v1", createdPlaylistRoutes);
+app.use("/v1", likedVideoRoutes);
+app.use("/v1", historyRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to API of Videozen");
