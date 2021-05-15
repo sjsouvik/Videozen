@@ -11,7 +11,7 @@ const {
 router.param("userId", getUserById);
 
 router
-  .route("/likedvideo/:userId")
+  .route("/watchlater/:userId")
   .get(getWatchLaterVideos)
   .post(createOrUpdateWatchLaterVideos);
 
