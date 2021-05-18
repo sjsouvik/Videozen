@@ -17,20 +17,18 @@ exports.getAllPlaylists = async (req, res) => {
 
 exports.getPlaylist = async (req, res) => {
   try {
-    const createdPlaylist = await CreatedPlaylist.findOne({
+    const createdPlaylists = await CreatedPlaylist.findOne({
       user: req.user._id,
     })
       .populate("user")
       .populate("playlist.videos");
 
-    res.json({ createdPlaylist });
+    res.json({ createdPlaylists });
   } catch (error) {
-    res
-      .status(404)
-      .json({
-        message: "NOT Found the created playlist for the user",
-        errorMessage: error.message,
-      });
+    res.status(404).json({
+      message: "NOT Found the created playlist for the user",
+      errorMessage: error.message,
+    });
   }
 };
 

@@ -39,11 +39,11 @@ exports.createOrUpdateWatchLaterVideos = async (req, res) => {
 
 exports.getWatchLaterVideos = async (req, res) => {
   try {
-    const watchLaterVideo = await WatchLater.findOne({ user: req.user._id })
+    const watchLaterVideos = await WatchLater.findOne({ user: req.user._id })
       .populate("videos")
       .populate("user");
 
-    res.json({ watchLaterVideo });
+    res.json({ watchLaterVideos });
   } catch (error) {
     res.status(404).json({
       message: "NOT Found the watch later videos for the user",
