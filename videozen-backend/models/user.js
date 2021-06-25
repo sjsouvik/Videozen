@@ -19,6 +19,11 @@ const userSchema = new mongoose.Schema(
         "This email is already registered, please enter a unique email id",
       ],
     },
+    password: {
+      type: String,
+      required: [true, "Please enter the password to register"],
+      select: false,
+    },
   },
   { timestamps: true }
 );

@@ -9,25 +9,31 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+const { isLoggedIn } = require("./controllers/auth");
+
 const userRoutes = require("./routes/user");
 const videoRoutes = require("./routes/video");
 const playlistRoutes = require("./routes/allPlaylist");
+const authRoutes = require("./routes/auth");
 const createdPlaylistRoutes = require("./routes/createdPlaylist");
 const likedVideoRoutes = require("./routes/likedVideo");
 const historyRoutes = require("./routes/history");
 const watchLaterRoutes = require("./routes/watchLater");
 
-app.use("/v1", userRoutes);
+app.get("/", (req, res) => {
+  res.send("Welcome to API of Videozen");
+});
+
 app.use("/v1", videoRoutes);
 app.use("/v1", playlistRoutes);
+app.use("/v1", authRoutes);
+
+app.use(isLoggedIn);
 app.use("/v1", createdPlaylistRoutes);
 app.use("/v1", likedVideoRoutes);
 app.use("/v1", historyRoutes);
 app.use("/v1", watchLaterRoutes);
-
-app.get("/", (req, res) => {
-  res.send("Welcome to API of Videozen");
-});
+app.use("/v1", userRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "NOT Found this route on server" });
