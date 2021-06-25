@@ -1,19 +1,22 @@
 import { useData } from "../../context/data-context";
 import { Link } from "react-router-dom";
 
+import Loader from "../Loader/Loader";
+
 import "./Videos.css";
 
 import Video from "../Video/Video";
 import { useState } from "react";
 
-const Videos = () => {
+import { addToHistory } from "../../server/serverUpdate";
+
+import Empty from "../../assets/empty.svg";
+
+const Videos = ({ loading }) => {
   const { state, dispatch } = useData();
   const [searchedText, setSearchedText] = useState("");
 
-  let allVideos = state.allPlaylists.reduce(
-    (accumulator, item) => [...accumulator, ...item.videos],
-    []
-  );
+  let allVideos = state.videos;
 
   let searchedVideos = allVideos.filter((video) =>
     video.title.toLowerCase().includes(searchedText.toLowerCase())
@@ -28,32 +31,37 @@ const Videos = () => {
         placeholder="Search for videos by title..."
         onChange={(e) => setSearchedText(e.target.value)}
       />
-      {searchedVideos.length === 0 && (
-        <h3>
-          No Videos found with{" "}
-          <em>
-            <q>{searchedText}</q>
-          </em>
-        </h3>
-      )}
-      <div className="card-row">
-        {searchedVideos.map((video) => (
-          <Link
-            to={`/playlist/allvideos/${video.id}`}
-            state={video}
-            style={{ textDecoration: "none", color: "black" }}
-            onClick={() =>
-              dispatch({ type: "ADD_TO_HISTORY", payload: { video: video } })
-            }
-          >
-            <Video
-              id={video.id}
-              image={video.image}
-              ownerImage={video.ownerImage}
-              title={video.title}
-            />
-          </Link>
-        ))}
+      {loading && <Loader />}
+      <div>
+        {!loading && searchedVideos.length === 0 && (
+          <div>
+            <h3>
+              No Videos found with{" "}
+              <em>
+                <q>{searchedText}</q>
+              </em>
+            </h3>
+            <img src={Empty} alt="empty list" className="empty-list" />
+          </div>
+        )}
+        <div className="card-row">
+          {searchedVideos.map((video) => (
+            <Link
+              to={`/playlist/allvideos/${video.videoId}`}
+              state={video}
+              style={{ textDecoration: "none", color: "black" }}
+              onClick={() => addToHistory(dispatch, video)}
+              key={video._id}
+            >
+              <Video
+                id={video.videoId}
+                image={video.image}
+                ownerImage={video.ownerImage}
+                title={video.title}
+              />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

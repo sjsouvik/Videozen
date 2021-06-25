@@ -12,12 +12,12 @@ const LibraryVideos = (props) => {
       <div className="card-row">
         {props.videos.map((video) => (
           <Link
-            to={`/createdplaylist/${props.playlistId}/${video.id}`}
+            to={`/createdplaylist/${props.playlistId}/${video.videoId}`}
             state={video}
             style={{ textDecoration: "none", color: "black" }}
           >
             <Video
-              id={video.id}
+              id={video.videoId}
               title={video.title}
               image={video.image}
               ownerImage={video.ownerImage}

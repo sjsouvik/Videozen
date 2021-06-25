@@ -35,13 +35,10 @@ const PlaylistVideo = () => {
 
   if (playlist === "playlist") {
     if (playlistId === "allvideos") {
-      playlistVideos = state.allPlaylists.reduce(
-        (accumulator, item) => [...accumulator, ...item.videos],
-        []
-      );
+      playlistVideos = state.videos;
     } else {
       playlistVideos = state.allPlaylists.find(
-        (playlist) => playlist.id === playlistId
+        (playlist) => playlist._id === playlistId
       ).videos;
     }
   } else if (playlist === "createdplaylist") {
@@ -49,9 +46,11 @@ const PlaylistVideo = () => {
       playlistVideos = state.likedVideos;
     } else if (playlistId === "history") {
       playlistVideos = state.history;
+    } else if (playlistId === "watchlater") {
+      playlistVideos = state.watchLaterVideos;
     } else {
       playlistVideos = state.createdPlaylists.find(
-        (playlist) => playlist.id === playlistId
+        (playlist) => playlist._id === playlistId
       ).videos;
     }
   }
@@ -64,7 +63,7 @@ const PlaylistVideo = () => {
         {playlistVideos.map((video) => (
           <NavLink
             to={{
-              pathname: `/${playlist}/${playlistId}/${video.id}`,
+              pathname: `/${playlist}/${playlistId}/${video.videoId}`,
             }}
             state={video}
             activeStyle={{ fontWeight: "bold" }}

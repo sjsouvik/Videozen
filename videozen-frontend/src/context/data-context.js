@@ -163,10 +163,12 @@ const allPlaylists = [
 ];
 
 const dataState = {
-  allPlaylists,
+  allPlaylists: [],
+  videos: [],
   likedVideos: [],
+  watchLaterVideos: [],
   history: [],
-  createdPlaylists: [{ id: uuid(), name: "Watch Later", videos: [] }],
+  createdPlaylists: [],
 };
 
 const DataProvider = ({ children }) => {

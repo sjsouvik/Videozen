@@ -8,6 +8,13 @@ import ModalPart from "../ModalPart/ModalPart";
 
 import AddPlaylist from "../../../assets/playlist1.svg";
 
+import {
+  addToLikedVideos,
+  removeFromLikedVideos,
+  addToWatchLaterVideos,
+  removeFromWatchLaterVideos,
+} from "../../../server/serverUpdate";
+
 const CurrentVideo = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -24,7 +31,7 @@ const CurrentVideo = (props) => {
 
   const isTheVideoLiked = (videoId) => {
     for (let i = 0; i < state.likedVideos.length; i++) {
-      if (state.likedVideos[i].id === videoId) {
+      if (state.likedVideos[i].videoId === videoId) {
         return true;
       }
     }
@@ -32,10 +39,10 @@ const CurrentVideo = (props) => {
   };
 
   const isTheVideoAddedToWatchLater = (videoId) => {
-    const watchLaterVideos = state.createdPlaylists[0].videos;
+    const watchLaterVideos = state.watchLaterVideos;
 
     for (let i = 0; i < watchLaterVideos.length; i++) {
-      if (watchLaterVideos[i].id === videoId) {
+      if (watchLaterVideos[i].videoId === videoId) {
         return true;
       }
     }
@@ -44,28 +51,19 @@ const CurrentVideo = (props) => {
   };
 
   const likeHandler = () => {
-    if (isTheVideoLiked(video.id)) {
-      dispatch({
-        type: "REMOVE_FROM_LIKED_VIDEOS",
-        payload: { video: video },
-      });
+    if (isTheVideoLiked(video.videoId)) {
+      removeFromLikedVideos(dispatch, video);
     } else {
-      dispatch({ type: "ADD_TO_LIKED_VIDEOS", payload: { video: video } });
+      addToLikedVideos(dispatch, video);
     }
   };
 
   const watchLaterHandler = () => {
-    if (isTheVideoAddedToWatchLater(video.id)) {
-      dispatch({
-        type: "REMOVE_FROM_PLAYLIST",
-        payload: { name: "Watch Later", video: video },
-      });
+    if (isTheVideoAddedToWatchLater(video.videoId)) {
+      removeFromWatchLaterVideos(dispatch, video);
       utilToast("Removed from Watch Later");
     } else {
-      dispatch({
-        type: "ADD_TO_PLAYLIST",
-        payload: { name: "Watch Later", video: video },
-      });
+      addToWatchLaterVideos(dispatch, video);
       utilToast("Added to Watch Later");
     }
   };
@@ -85,14 +83,16 @@ const CurrentVideo = (props) => {
                 <span className="icon-video" onClick={likeHandler}>
                   <ion-icon
                     name="heart"
-                    style={isTheVideoLiked(video.id) ? { color: "red" } : null}
+                    style={
+                      isTheVideoLiked(video.videoId) ? { color: "red" } : null
+                    }
                   ></ion-icon>
                 </span>
                 <span className="icon-video" onClick={watchLaterHandler}>
                   <ion-icon
                     name="time"
                     style={
-                      isTheVideoAddedToWatchLater(video.id)
+                      isTheVideoAddedToWatchLater(video.videoId)
                         ? { color: "red" }
                         : null
                     }

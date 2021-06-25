@@ -11,9 +11,18 @@ const Library = () => {
         <LibraryVideos
           videos={playlist.videos}
           playlistName={playlist.name}
-          playlistId={playlist.id}
+          playlistId={playlist._id}
         />
       ))}
+      <div style={{ paddingTop: "2rem" }}>
+        {
+          <LibraryVideos
+            videos={state.watchLaterVideos}
+            playlistName="Watch Later"
+            playlistId="watchlater"
+          />
+        }
+      </div>
       <div style={{ paddingTop: "2rem" }}>
         {
           <LibraryVideos

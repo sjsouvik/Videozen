@@ -29,10 +29,6 @@ const NavBar = () => {
             <div className="nav-text">Library</div>
           </NavLink>{" "}
         </li>
-        {/* 
-            <li className="nav-item">
-              <button className="btn btn-secondary">SIGN UP</button>
-            </li> */}
       </ul>
     </nav>
   );

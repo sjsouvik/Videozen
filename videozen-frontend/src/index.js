@@ -11,11 +11,11 @@ import DataProvider from "./context/data-context";
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
-    <DataProvider>
-      <Router>
+    <Router>
+      <DataProvider>
         <App />
-      </Router>
-    </DataProvider>
+      </DataProvider>
+    </Router>
   </StrictMode>,
   rootElement
 );

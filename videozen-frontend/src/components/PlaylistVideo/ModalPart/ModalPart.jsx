@@ -5,6 +5,12 @@ import { useLocation } from "react-router-dom";
 import Modal from "../../Modal/Modal";
 import Toast from "../../Toast/Toast";
 
+import {
+  createNewPlaylist,
+  addToPlaylist,
+  removeFromPlaylist,
+} from "../../../server/serverUpdate";
+
 const ModalPart = (props) => {
   let { state: video } = useLocation();
 
@@ -15,26 +21,40 @@ const ModalPart = (props) => {
 
   const { state, dispatch } = useData();
 
-  const playlists = () => {
-    const allPlaylists = state.allPlaylists;
-    let partOfPlaylists;
+  // const playlists = () => {
+  //   const allPlaylists = state.allPlaylists;
+  //   let partOfPlaylists;
 
-    for (let i = 0; i < allPlaylists.length; i++) {
-      for (let j = 0; j < allPlaylists[i].videos.length; j++) {
-        if (allPlaylists[i].videos[j].id === video.id) {
-          partOfPlaylists = allPlaylists[i].videos[j].partOfPlaylists;
+  //   for (let i = 0; i < allPlaylists.length; i++) {
+  //     for (let j = 0; j < allPlaylists[i].videos.length; j++) {
+  //       if (allPlaylists[i].videos[j].id === video.id) {
+  //         partOfPlaylists = allPlaylists[i].videos[j].partOfPlaylists;
 
-          return partOfPlaylists
-            ? partOfPlaylists.reduce((accumulator, playlistName) => {
-                return { ...accumulator, [playlistName]: playlistName };
-              }, {})
-            : 0;
+  //         return partOfPlaylists
+  //           ? partOfPlaylists.reduce((accumulator, playlistName) => {
+  //               return { ...accumulator, [playlistName]: playlistName };
+  //             }, {})
+  //           : 0;
+  //       }
+  //     }
+  //   }
+  // };
+
+  const playlists = (createdPlaylist) => {
+    let partOfPlaylists = [];
+
+    for (let i = 0; i < createdPlaylist.length; i++) {
+      for (let j = 0; j < createdPlaylist[i].videos.length; j++) {
+        if (createdPlaylist[i].videos[j].videoId === video.videoId) {
+          partOfPlaylists = [...partOfPlaylists, createdPlaylist[i]._id];
         }
       }
     }
+
+    return partOfPlaylists;
   };
 
-  let partOfPlaylists = playlists();
+  let partOfPlaylists = playlists(state.createdPlaylists);
 
   const utilToast = (message) => {
     setShowToast(true);
@@ -44,25 +64,16 @@ const ModalPart = (props) => {
 
   const updatePlaylistHandler = (e, playlistName) => {
     if (e.target.checked) {
-      dispatch({
-        type: "ADD_TO_PLAYLIST",
-        payload: { name: playlistName, video: video },
-      });
+      addToPlaylist(dispatch, playlistName, video);
       utilToast(`Added to ${playlistName}`);
     } else {
-      dispatch({
-        type: "REMOVE_FROM_PLAYLIST",
-        payload: { name: playlistName, video: video },
-      });
-      utilToast(`Removed from ${playlistName}`);
+      const isRemoved = removeFromPlaylist(dispatch, playlistName, video);
+      isRemoved && utilToast(`Removed from ${playlistName}`);
     }
   };
 
   const createPlaylistHandler = () => {
-    dispatch({
-      type: "CREATE_NEW_PLAYLIST",
-      payload: { name: newPlaylistName, video: video },
-    });
+    createNewPlaylist(dispatch, newPlaylistName, video);
     utilToast(`Added to ${newPlaylistName}`);
     props.openModal(false);
     setCreatePlaylist(false);
@@ -79,10 +90,16 @@ const ModalPart = (props) => {
         <h5 style={{ padding: "1rem", margin: "0" }}>Add to playlist</h5>
         <div className="modal-section">
           {state.createdPlaylists.map((playlist) => (
-            <label className="playlist-checkbox">
+            <label className="playlist-checkbox" key={playlist._id}>
               <input
                 type="checkbox"
-                checked={playlist.name in partOfPlaylists}
+                // checked={playlist.name in partOfPlaylists}
+                checked={
+                  partOfPlaylists.length > 0 &&
+                  partOfPlaylists.find(
+                    (playlistId) => playlistId === playlist._id
+                  )
+                }
                 onChange={(e) => updatePlaylistHandler(e, playlist.name)}
               />
               <span>{playlist.name}</span>
