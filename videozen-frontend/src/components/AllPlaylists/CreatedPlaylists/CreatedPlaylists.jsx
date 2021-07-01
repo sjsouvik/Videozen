@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 
 import { useData } from "../../../context/data-context";
+import { useAuth } from "../../../context/auth-context";
 
 import "./CreatedPlaylists.css";
 
 import Video from "../../Video/Video";
+import Loader from "../../Loader/Loader";
 
 const CreatedPlaylistsVideos = (props) => {
   return (
@@ -13,6 +15,7 @@ const CreatedPlaylistsVideos = (props) => {
       <div className="card-row">
         {props.videos.map((video) => (
           <Link
+            key={video.videoId}
             to={`/createdplaylist/${props.playlistId}/${video.videoId}`}
             state={video}
             style={{ textDecoration: "none", color: "black" }}
@@ -30,28 +33,43 @@ const CreatedPlaylistsVideos = (props) => {
   );
 };
 
-const CreatedPlaylists = () => {
+const CreatedPlaylists = ({ loading }) => {
   const {
     state: { createdPlaylists },
   } = useData();
 
+  const { authToken } = useAuth();
+
   return (
     <section>
-      <h2 className="text-left">Created Playlists</h2>
-      {createdPlaylists.length === 0 && (
-        <div className="empty-playlist">
-          <h5 className="text-left">Nothing to show here</h5>
-        </div>
+      {loading && <Loader />}
+      {!loading && (
+        <>
+          <h2 className="text-left">Created Playlists</h2>
+          {!authToken && (
+            <div className="empty-playlist">
+              <h5 className="text-left">
+                Please login to see created playlists
+              </h5>
+            </div>
+          )}
+          {authToken && createdPlaylists.length === 0 && (
+            <div className="empty-playlist">
+              <h5 className="text-left">Nothing to show here</h5>
+            </div>
+          )}
+          <div>
+            {createdPlaylists.map((playlist) => (
+              <CreatedPlaylistsVideos
+                key={playlist._id}
+                videos={playlist.videos}
+                playlistName={playlist.name}
+                playlistId={playlist._id}
+              />
+            ))}
+          </div>
+        </>
       )}
-      <div>
-        {createdPlaylists.map((playlist) => (
-          <CreatedPlaylistsVideos
-            videos={playlist.videos}
-            playlistName={playlist.name}
-            playlistId={playlist._id}
-          />
-        ))}
-      </div>
     </section>
   );
 };

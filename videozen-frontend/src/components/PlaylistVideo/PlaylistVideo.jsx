@@ -62,6 +62,7 @@ const PlaylistVideo = () => {
       <nav className="playlist-menu">
         {playlistVideos.map((video) => (
           <NavLink
+            key={video.videoId}
             to={{
               pathname: `/${playlist}/${playlistId}/${video.videoId}`,
             }}

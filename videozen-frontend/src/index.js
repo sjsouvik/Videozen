@@ -6,15 +6,18 @@ import "./index.css";
 
 import App from "./App";
 
+import AuthProvider from "./context/auth-context";
 import DataProvider from "./context/data-context";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
     <Router>
-      <DataProvider>
-        <App />
-      </DataProvider>
+      <AuthProvider>
+        <DataProvider>
+          <App />
+        </DataProvider>
+      </AuthProvider>
     </Router>
   </StrictMode>,
   rootElement

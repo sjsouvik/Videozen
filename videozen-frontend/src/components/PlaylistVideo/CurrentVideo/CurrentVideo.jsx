@@ -8,6 +8,8 @@ import ModalPart from "../ModalPart/ModalPart";
 
 import AddPlaylist from "../../../assets/playlist1.svg";
 
+import { useAuth } from "../../../context/auth-context";
+
 import {
   addToLikedVideos,
   removeFromLikedVideos,
@@ -22,6 +24,8 @@ const CurrentVideo = (props) => {
 
   const { state: video } = useLocation();
   const { state, dispatch } = useData();
+
+  const { authToken, authUser } = useAuth();
 
   const utilToast = (message) => {
     setShowToast(true);
@@ -51,21 +55,36 @@ const CurrentVideo = (props) => {
   };
 
   const likeHandler = () => {
+    if (!authToken) {
+      return utilToast("Please login to like it");
+    }
+
     if (isTheVideoLiked(video.videoId)) {
-      removeFromLikedVideos(dispatch, video);
+      removeFromLikedVideos(dispatch, video, authUser._id, authToken);
     } else {
-      addToLikedVideos(dispatch, video);
+      addToLikedVideos(dispatch, video, authUser._id, authToken);
     }
   };
 
   const watchLaterHandler = () => {
+    if (!authToken) {
+      return utilToast("Please login to add to watch it later");
+    }
+
     if (isTheVideoAddedToWatchLater(video.videoId)) {
-      removeFromWatchLaterVideos(dispatch, video);
+      removeFromWatchLaterVideos(dispatch, video, authUser._id, authToken);
       utilToast("Removed from Watch Later");
     } else {
-      addToWatchLaterVideos(dispatch, video);
+      addToWatchLaterVideos(dispatch, video, authUser._id, authToken);
       utilToast("Added to Watch Later");
     }
+  };
+
+  const playlistHandler = () => {
+    if (!authToken) {
+      return utilToast("Please login to add it to your playlist");
+    }
+    setShowModal(true);
   };
 
   return (
@@ -84,7 +103,9 @@ const CurrentVideo = (props) => {
                   <ion-icon
                     name="heart"
                     style={
-                      isTheVideoLiked(video.videoId) ? { color: "red" } : null
+                      authToken && isTheVideoLiked(video.videoId)
+                        ? { color: "red" }
+                        : null
                     }
                   ></ion-icon>
                 </span>
@@ -92,7 +113,7 @@ const CurrentVideo = (props) => {
                   <ion-icon
                     name="time"
                     style={
-                      isTheVideoAddedToWatchLater(video.videoId)
+                      authToken && isTheVideoAddedToWatchLater(video.videoId)
                         ? { color: "red" }
                         : null
                     }
@@ -100,7 +121,7 @@ const CurrentVideo = (props) => {
                 </span>
                 <span
                   className="icon-video icon-save"
-                  onClick={() => setShowModal(true)}
+                  onClick={playlistHandler}
                 >
                   {/* <ion-icon name="bookmark"></ion-icon> */}
                   <img src={AddPlaylist} />

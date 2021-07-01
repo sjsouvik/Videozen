@@ -1,5 +1,3 @@
-import { useData } from "../../context/data-context";
-
 import { Link } from "react-router-dom";
 
 import "./AllPlaylists.css";
@@ -9,24 +7,43 @@ import HorizontalPlaylistCard from "../HorizontalPlaylistCard/HorizontalPlaylist
 
 import { addToHistory } from "../../server/serverUpdate";
 
-const AllPlaylists = () => {
+import { useData } from "../../context/data-context";
+import { useAuth } from "../../context/auth-context";
+import Loader from "../Loader/Loader";
+
+const AllPlaylists = ({
+  loading: { createdPlaylistsLoading, allPlaylistsLoading },
+}) => {
   const { state, dispatch } = useData();
+  const { authToken, authUser } = useAuth();
 
   return (
     <div className="playlists">
-      <CreatedPlaylists />
-
-      <h2 style={{ textAlign: "left" }}>Other Playlists</h2>
-      {state.allPlaylists.map((playlist) => (
-        <Link
-          to={`/playlist/${playlist._id}/${playlist.videos[0].videoId}`}
-          state={playlist.videos[0]}
-          style={{ textDecoration: "none", color: "black" }}
-          onClick={() => addToHistory(dispatch, playlist.videos[0])}
-        >
-          <HorizontalPlaylistCard playlist={playlist} />
-        </Link>
-      ))}
+      <CreatedPlaylists loading={createdPlaylistsLoading} />
+      {allPlaylistsLoading && <Loader />}
+      {!allPlaylistsLoading && (
+        <>
+          <h2 style={{ textAlign: "left" }}>Other Playlists</h2>
+          {state.allPlaylists.map((playlist) => (
+            <Link
+              key={playlist._id}
+              to={`/playlist/${playlist._id}/${playlist.videos[0].videoId}`}
+              state={playlist.videos[0]}
+              style={{ textDecoration: "none", color: "black" }}
+              onClick={() =>
+                addToHistory(
+                  dispatch,
+                  playlist.videos[0],
+                  authUser._id,
+                  authToken
+                )
+              }
+            >
+              <HorizontalPlaylistCard playlist={playlist} />
+            </Link>
+          ))}
+        </>
+      )}
     </div>
   );
 };

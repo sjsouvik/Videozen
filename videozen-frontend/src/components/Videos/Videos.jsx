@@ -1,4 +1,3 @@
-import { useData } from "../../context/data-context";
 import { Link } from "react-router-dom";
 
 import Loader from "../Loader/Loader";
@@ -12,8 +11,13 @@ import { addToHistory } from "../../server/serverUpdate";
 
 import Empty from "../../assets/empty.svg";
 
+import { useData } from "../../context/data-context";
+import { useAuth } from "../../context/auth-context";
+import { useAxios } from "../../server/useAxios";
+
 const Videos = ({ loading }) => {
   const { state, dispatch } = useData();
+  const { authToken, authUser } = useAuth();
   const [searchedText, setSearchedText] = useState("");
 
   let allVideos = state.videos;
@@ -21,6 +25,17 @@ const Videos = ({ loading }) => {
   let searchedVideos = allVideos.filter((video) =>
     video.title.toLowerCase().includes(searchedText.toLowerCase())
   );
+
+  const { loading: createdPlaylistsLoading } = useAxios(
+    "createdplaylist",
+    "createdPlaylists"
+  );
+  const { loading: likedVideosLoading } = useAxios("likedvideo", "likedVideos");
+  const { loading: watchLaterVideosLoading } = useAxios(
+    "watchlater",
+    "watchLaterVideos"
+  );
+  const { loading: historyLoading } = useAxios("history", "history");
 
   return (
     <div className="videos">
@@ -50,7 +65,9 @@ const Videos = ({ loading }) => {
               to={`/playlist/allvideos/${video.videoId}`}
               state={video}
               style={{ textDecoration: "none", color: "black" }}
-              onClick={() => addToHistory(dispatch, video)}
+              onClick={() =>
+                addToHistory(dispatch, video, authUser._id, authToken)
+              }
               key={video._id}
             >
               <Video

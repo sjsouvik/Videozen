@@ -4,7 +4,11 @@ import playlist from "../../assets/playlist.svg";
 import library from "../../assets/video.svg";
 import login from "../../assets/user.svg";
 
+import { useAuth } from "../../context/auth-context";
+
 const NavBar = () => {
+  const { authToken, authUser } = useAuth();
+
   return (
     <nav className="page-navigation">
       <div className="brand">
@@ -14,9 +18,17 @@ const NavBar = () => {
       </div>
       <ul className="nav-menu">
         <li className="nav-item">
-          <img src={login} className="svg-icon" />
-          <div className="nav-text">Login</div>
+          <NavLink
+            to={authToken ? "/profile" : "/login"}
+            activeStyle={{ fontWeight: "bold" }}
+          >
+            <img src={login} className="svg-icon" />
+            <div style={{ fontSize: "0.85rem" }}>
+              {authToken ? `Hi, ${authUser?.firstName}` : "Log In"}
+            </div>
+          </NavLink>
         </li>
+
         <li className="nav-item">
           <NavLink to="allplaylists" activeStyle={{ fontWeight: "bold" }}>
             <img src={playlist} className="svg-icon" />

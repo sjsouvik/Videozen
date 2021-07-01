@@ -10,6 +10,10 @@ import PlaylistVideo from "./components/PlaylistVideo/PlaylistVideo";
 import Videos from "./components/Videos/Videos";
 import Library from "./components/Library/Library";
 import NotFound from "./components/NotFound/NotFound";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Signup from "./components/Signup/Signup";
+import Login from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   const { loading: videoLoading } = useAxios("video", "videos");
@@ -35,12 +39,34 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Videos loading={videoLoading} />} />
-          <Route path="allplaylists" element={<AllPlaylists />} />
           <Route
-            path=":playlist/:playlistId/:videoId"
+            path="/allplaylists"
+            element={
+              <AllPlaylists
+                loading={{ allPlaylistsLoading, createdPlaylistsLoading }}
+              />
+            }
+          />
+          <Route
+            path="/:playlist/:playlistId/:videoId"
             element={<PlaylistVideo />}
           />
-          <Route path="library" element={<Library />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <PrivateRoute
+            path="/library"
+            element={
+              <Library
+                loading={{
+                  createdPlaylistsLoading,
+                  likedVideosLoading,
+                  watchLaterVideosLoading,
+                  historyLoading,
+                }}
+              />
+            }
+          />
+          <PrivateRoute path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

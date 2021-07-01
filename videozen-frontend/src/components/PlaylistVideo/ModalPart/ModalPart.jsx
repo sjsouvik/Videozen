@@ -11,6 +11,8 @@ import {
   removeFromPlaylist,
 } from "../../../server/serverUpdate";
 
+import { useAuth } from "../../../context/auth-context";
+
 const ModalPart = (props) => {
   let { state: video } = useLocation();
 
@@ -20,6 +22,7 @@ const ModalPart = (props) => {
   const [toastMessage, setToastMessage] = useState(null);
 
   const { state, dispatch } = useData();
+  const { authToken, authUser } = useAuth();
 
   // const playlists = () => {
   //   const allPlaylists = state.allPlaylists;
@@ -64,16 +67,28 @@ const ModalPart = (props) => {
 
   const updatePlaylistHandler = (e, playlistName) => {
     if (e.target.checked) {
-      addToPlaylist(dispatch, playlistName, video);
+      addToPlaylist(dispatch, playlistName, video, authUser._id, authToken);
       utilToast(`Added to ${playlistName}`);
     } else {
-      const isRemoved = removeFromPlaylist(dispatch, playlistName, video);
+      const isRemoved = removeFromPlaylist(
+        dispatch,
+        playlistName,
+        video,
+        authUser._id,
+        authToken
+      );
       isRemoved && utilToast(`Removed from ${playlistName}`);
     }
   };
 
   const createPlaylistHandler = () => {
-    createNewPlaylist(dispatch, newPlaylistName, video);
+    createNewPlaylist(
+      dispatch,
+      newPlaylistName,
+      video,
+      authUser._id,
+      authToken
+    );
     utilToast(`Added to ${newPlaylistName}`);
     props.openModal(false);
     setCreatePlaylist(false);

@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import { serverRequests } from "./serverRequests";
 
 import { useData } from "../context/data-context";
+import { useAuth } from "../context/auth-context";
 
 export const useAxios = (endpoint, propertyToInitialize) => {
-  const userId = "6096352966132b598c40964e";
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const { dispatch } = useData();
+  const { authToken, authUser } = useAuth();
 
   useEffect(() => {
     (async () => {
@@ -35,20 +35,23 @@ export const useAxios = (endpoint, propertyToInitialize) => {
               },
             });
           }
-
-          console.log(data[propertyToInitialize]);
         } else {
           const {
             response: { data },
             error,
           } = await serverRequests({
             requestType: "get",
-            url: `${process.env.REACT_APP_BACKEND}/${endpoint}/${userId}`,
+            url: `${process.env.REACT_APP_BACKEND}/${endpoint}/${authUser._id}`,
+            token: { headers: { authorization: `Bearer ${authToken}` } },
           });
 
           const dataToBeDispatched =
             endpoint === "createdplaylist"
-              ? data[propertyToInitialize].playlist
+              ? !data[propertyToInitialize]
+                ? []
+                : data[propertyToInitialize].playlist
+              : !data[propertyToInitialize]
+              ? []
               : data[propertyToInitialize].videos;
 
           if (!error) {
@@ -60,12 +63,6 @@ export const useAxios = (endpoint, propertyToInitialize) => {
               },
             });
           }
-
-          console.log(
-            endpoint === "createdplaylist"
-              ? data[propertyToInitialize]
-              : data[propertyToInitialize]
-          );
         }
       } catch (error) {
         setError(true);
