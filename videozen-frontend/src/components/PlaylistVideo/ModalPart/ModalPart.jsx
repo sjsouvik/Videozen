@@ -135,7 +135,7 @@ const ModalPart = (props) => {
                 type="text"
                 text={newPlaylistName}
                 id="formControlInput"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter playlist name..."
                 onChange={(e) => setNewPlaylistName(e.target.value)}
               />

@@ -3,12 +3,12 @@ import "./Modal.css";
 const Modal = (props) => {
   return (
     <div
-      class="modal"
+      className="modal"
       style={props.show ? { display: "block" } : { display: "none" }}
     >
-      <div class="modal-content">
+      <div className="modal-content">
         <span
-          class="close-button"
+          className="close-button"
           onClick={() => {
             props.close(false);
             props.createPlaylist(false);
