@@ -66,6 +66,7 @@ const Videos = ({ loading }) => {
               state={video}
               style={{ textDecoration: "none", color: "black" }}
               onClick={() =>
+                authToken &&
                 addToHistory(dispatch, video, authUser._id, authToken)
               }
               key={video._id}

@@ -31,6 +31,7 @@ const AllPlaylists = ({
               state={playlist.videos[0]}
               style={{ textDecoration: "none", color: "black" }}
               onClick={() =>
+                authToken &&
                 addToHistory(
                   dispatch,
                   playlist.videos[0],

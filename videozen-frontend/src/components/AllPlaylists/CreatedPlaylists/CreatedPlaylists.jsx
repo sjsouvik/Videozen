@@ -58,16 +58,18 @@ const CreatedPlaylists = ({ loading }) => {
               <h5 className="text-left">Nothing to show here</h5>
             </div>
           )}
-          <div>
-            {createdPlaylists.map((playlist) => (
-              <CreatedPlaylistsVideos
-                key={playlist._id}
-                videos={playlist.videos}
-                playlistName={playlist.name}
-                playlistId={playlist._id}
-              />
-            ))}
-          </div>
+          {authToken && (
+            <div>
+              {createdPlaylists.map((playlist) => (
+                <CreatedPlaylistsVideos
+                  key={playlist._id}
+                  videos={playlist.videos}
+                  playlistName={playlist.name}
+                  playlistId={playlist._id}
+                />
+              ))}
+            </div>
+          )}
         </>
       )}
     </section>
