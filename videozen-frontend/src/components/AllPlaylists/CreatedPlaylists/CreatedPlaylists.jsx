@@ -12,7 +12,7 @@ const CreatedPlaylistsVideos = (props) => {
   return (
     <div>
       <h3 className="text-left">{props.playlistName}</h3>
-      <div className="card-row">
+      <div className="card-grid-row">
         {props.videos.map((video) => (
           <Link
             key={video.videoId}

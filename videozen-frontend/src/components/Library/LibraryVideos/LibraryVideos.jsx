@@ -15,7 +15,7 @@ const LibraryVideos = (props) => {
           {videos.length === 0 && (
             <h5 className="text-left">Nothing to show here</h5>
           )}
-          <div className="card-row">
+          <div className="card-grid-row">
             {videos.map((video) => (
               <Link
                 key={video.videoId}

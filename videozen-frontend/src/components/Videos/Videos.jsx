@@ -59,7 +59,7 @@ const Videos = ({ loading }) => {
             <img src={Empty} alt="empty list" className="empty-list" />
           </div>
         )}
-        <div className="card-row">
+        <div className="card-grid-row">
           {searchedVideos.map((video) => (
             <Link
               to={`/playlist/allvideos/${video.videoId}`}
