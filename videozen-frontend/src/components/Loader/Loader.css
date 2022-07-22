@@ -1,0 +1,20 @@
+.loader {
+  border: 0.5rem solid #f3f3f3;
+  border-top: 0.5rem solid #5a67d8;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  top: 80%;
+  left: 40%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,126 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  height: 100vh;
+}
+
+.page-navigation {
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.page-navigation a {
+  color: var(--primary-color);
+}
+
+main {
+  position: relative;
+  top: 6rem;
+  height: 100%;
+}
+
+.link-active {
+  font-weight: bold;
+}
+
+.page-navigation li:hover {
+  text-decoration: underline;
+}
+
+.card-grid-row {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  padding: 0.5rem;
+}
+
+.card,
+.card:hover {
+  box-shadow: none;
+}
+
+.svg-icon {
+  height: 1.5rem;
+}
+
+.nav-text {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.text-left {
+  text-align: left;
+}
+
+@media only screen and (max-width: 1040px) {
+  .card-grid-row {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media only screen and (max-width: 970px) {
+  .vertical {
+    width: 16rem;
+  }
+
+  .vertical-img {
+    width: 16rem;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  .vertical {
+    width: 14rem;
+  }
+  .vertical-img {
+    width: 14rem;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .card-grid-row {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  .vertical {
+    width: 18rem;
+  }
+  .vertical-img {
+    width: 18rem;
+  }
+}
+
+@media only screen and (max-width: 675px) {
+  .card-grid-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .vertical {
+    width: 14rem;
+  }
+  .vertical-img {
+    width: 14rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .card-grid-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vertical {
+    width: 100%;
+  }
+  .vertical-img {
+    width: 100%;
+  }
+}
